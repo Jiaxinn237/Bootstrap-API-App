@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="deletemethod">
     <div class="shadow p-3 mb-5 bg-body-tertiary rounded" style="max-width: fit-content; margin: auto;">
       <div class="card-body">
         <h1>Delete SMS</h1>
@@ -57,6 +57,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.deletemethod {
+  margin-top:87px;
+  text-align: center;
 }
 
 .form-container {

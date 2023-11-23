@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="getmethod">
     <div class="shadow p-3 mb-5 bg-body-tertiary rounded" style="max-width: fit-content; margin: auto;">
       <h1>Get SMS</h1>
       <form @submit.prevent="submitForm" class="form-container">
@@ -100,6 +100,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.getmethod {
+  margin-top: 87px;
+  text-align: center;
 }
 
 .form-container {

@@ -1,4 +1,25 @@
 <template>
+    <div class="universal-header">
+        <img src='src/assets/cookiss.png' class="img-fluid">
+        <div style="float: right; padding-top: 40px;">
+        <div style="margin-right: 10px; display: inline;">
+            <div style="margin-right:10px; display: inline;">
+                <span style=" font: 15px 'lato'">
+                    PHONE &nbsp;
+                </span>
+                +603 7773 1510
+            </div>
+            <div style="display: inline;">
+                <span style="display: inline; font: 15px 'lato';">
+                    EMAIL &nbsp;
+                </span>
+                <a href="mailto:enquiry@cookissmobile.com" style="text-decoration: none;" class="link-danger">
+                    enquiry@cookissmobile.com
+                </a>
+            </div>
+        </div>
+    </div>
+    </div>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid">
             <router-link to="/homepage" class="nav-link">
@@ -44,19 +65,26 @@ const route = useRoute();
 </script>
   
 <style scoped>
-.navbar {
-    background-color: #343a40;
-    /* Set the background color for both states */
+.universal-header {
+    padding-top: 20px;
+    display: flex;
 }
 
-.navbar-brand i {
-    color: #fff;
-    /* Set the color of the icon */
+.universal-header img {
+    position: relative;
+    padding-left: 6%;
+    padding-right: 30%;
+    /* padding-bottom: 5px; */
+}
+
+.navbar {
+    background-color: #2b3035;
+    width: 100%;
+    text-align: center;
 }
 
 .nav-link {
-    color: #fff;
-    /* Set the color of the navigation links */
+    color: white;
 }
 
 .nav-link i {
@@ -66,7 +94,7 @@ const route = useRoute();
 /* Styles specific to the collapsed state using a media query */
 @media (max-width: 991px) {
     .navbar-collapse {
-        background-color: #343a40;
+        background-color: #2b3035;
         /* Set the background color for the collapsed state */
     }
 
@@ -89,8 +117,6 @@ nav {
     flex-shrink: 0;
     position: relative;
     z-index: 1;
-    margin-bottom: 80px;
+    /* margin-bottom: 80px; */
 }
-
-
 </style>

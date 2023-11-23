@@ -1,4 +1,5 @@
 <template>
+  <div class="putmethod">
   <div class="form-container">
     <div class="shadow p-3 mb-5 bg-body-tertiary rounded" style="margin: auto;">
       <h1>Edit SMS</h1>
@@ -18,7 +19,7 @@
         <button type="submit" class="form-button">Edit SMS</button>
       </form>
     </div>
-  </div>
+  </div></div>
 </template>
   
 <script>
@@ -79,6 +80,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.putmethod {
+  margin-top: 87px;
+  text-align: center;
 }
 
 .form-container {

@@ -1,11 +1,12 @@
 <template>
+  <div class="listallmethod">
   <div class="shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 80%; margin: auto;">
     <div>
       <h1>All SMS Messages</h1>
     </div>
     <!-- Display SMS messages as a table -->
     <div v-if="smsList.length > 0">
-      <table class="table">
+      <table class="table table-striped">
         <thead>
           <tr>
             <th>ID</th>
@@ -29,6 +30,7 @@
     <div v-else>
       <p>No SMS messages found.</p>
     </div>
+  </div>
   </div>
 </template>
 
@@ -61,10 +63,9 @@ export default {
 </script>
   
 <style scoped>
-.sms-item {
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin: 10px 0;
+.listallmethod {
+  margin-top: 87px;
+  text-align: center;
 }
 </style>
   

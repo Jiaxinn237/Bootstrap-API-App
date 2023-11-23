@@ -1,21 +1,35 @@
 <template>
-  <div class="shadow p-3 mb-5 bg-body-tertiary rounded" style="max-width: fit-content; margin: auto;">
-  <div class="form-container">
-    <h1>SMS Form</h1>
-    <form @submit.prevent="submitForm" class="form-label">
-      <label for="from">From:</label>
-      <input type="text" v-model="from" class="form-input" required />
+  <div class="postmethod">
+    <div class="shadow p-3 mb-5 bg-body-tertiary rounded" style="max-width: fit-content; margin: auto;">
+      <div class="form-container">
+        <h1>SMS Form</h1>
+        <form @submit.prevent="submitForm" class="form-label">
+          <div class="row mb-3">
+            <label for="colFormLabel" class="col-sm-2 col-form-label">From</label>
+            <div class="col-sm-20">
+              <input type="email" class="form-control" id="colFormLabel" placeholder="From ">
+            </div>
+          </div>
 
-      <label for="to">To:</label>
-      <input type="text" v-model="to" class="form-input" required />
+          <div class="row mb-3">
+            <label for="colFormLabel" class="col-sm-2 col-form-label">To</label>
+            <div class="col-sm-20">
+              <input type="email" class="form-control" id="colFormLabel" placeholder="To ">
+            </div>
+          </div>
 
-      <label for="text">Text:</label>
-      <textarea v-model="text" class="form-input" required></textarea>
+          <div class="row mb-3">
+            <label for="colFormLabel" class="col-sm-2 col-form-label">Text</label>
+            <div class="col-sm-20">
+              <input type="email" class="form-control" id="colFormLabel" placeholder="Enter your text here">
+            </div>
+          </div>
 
-      <button type="submit" class="form-button">Send SMS</button>
-    </form>
+          <button type="submit" class="form-button">Send SMS</button>
+        </form>
+      </div>
+    </div>
   </div>
-</div>
 </template>
   
 <script>
@@ -48,7 +62,7 @@ export default {
         // Check if the SMS was successfully added
         if (data.isSuccess) {
           alert('SMS successfully added!');
-          
+
           // Clear the form fields
           this.from = '';
           this.to = '';
@@ -67,17 +81,23 @@ export default {
   
 <style scoped>
 #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+
+.postmethod {
+  margin-top: 87px;
+  text-align: center;
 }
 
 .form-container {
-  max-width: 400px; /* Adjust the maximum width as needed */
-  margin: 0 auto; 
+  max-width: 400px;
+  /* Adjust the maximum width as needed */
+  margin: 0 auto;
 }
 
 .form-label {
