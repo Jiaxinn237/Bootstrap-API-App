@@ -1,33 +1,68 @@
 <template>
-  <div class="deletemethod">
-    <div class="shadow p-3 mb-5 bg-body-tertiary rounded" style="max-width: fit-content; margin: auto;">
-      <div class="card-body">
+  <div class="deletemethod" style="margin-top: 87px; text-align: center;">
+    <div class="form-container" style="max-width: 400px; margin: auto;">
+      <div class="shadow p-3 mb-5 bg-body-tertiary rounded" style="margin: auto;">
         <h1>Delete SMS</h1>
-        <form @submit.prevent="submitForm" class="form-container">
-          <label for="smsId" class="form-label">SMS ID:</label>
-          <input type="text" v-model="smsId" class="form-input" required />
-          <button type="submit" class="form-button">Delete SMS</button>
-        </form>
-      </div>
-    </div>
 
-    <div v-if="deleteResponse">
-      <h2>Result</h2>
-      <p>{{ deleteResponse.message }}</p>
+        <!-- Show SMS ID input field initially -->
+        <form v-if="!deleting" @submit.prevent="checkSMS" class="form-label" style="display: block; margin-bottom: 5px;">
+          <label for="smsId">SMS ID:</label>
+          <input type="text" v-model="smsId" class="form-input" required />
+          <button type="submit" class="btn btn-primary" style="background-color: red; border: none; font-family: 'Lato';">Check SMS</button>
+        </form>
+
+        <!-- Show existing data and delete options if SMS exists -->
+        <div v-if="smsData && deleting" class="found-sms">
+          <h2>SMS Details</h2>
+          <p><strong>ID:</strong> {{ smsData.smsId }}</p>
+          <p><strong>From:</strong> {{ smsData.from }}</p>
+          <p><strong>To:</strong> {{ smsData.to }}</p>
+          <p><strong>Text:</strong> {{ smsData.text }}</p>
+          <button @click="deleteSMS" class="btn btn-danger" style="background-color: red; border: none; font-family: 'Lato';">Delete SMS</button>
+        </div>
+
+        <!-- Display success message after deletion -->
+        <div v-if="deleteSuccess">
+          <h2>Result</h2>
+          <p>{{ deleteSuccess }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
-  
+
 <script>
 export default {
   data() {
     return {
       smsId: '',
-      deleteResponse: null,
+      smsData: null,
+      deleting: false,
+      deleteSuccess: '',
     };
   },
   methods: {
-    async submitForm() {
+    async checkSMS() {
+      try {
+        const response = await fetch(`http://localhost:5678/sms/get?id=${this.smsId}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        this.smsData = await response.json();
+        this.deleting = true; // Show delete options if SMS exists
+      } catch (error) {
+        console.error('Error during fetch:', error);
+        this.deleting = false; // Hide delete options if there's an error
+      }
+    },
+    async deleteSMS() {
       try {
         const response = await fetch(`http://localhost:5678/sms/delete?id=${this.smsId}`, {
           method: 'DELETE',
@@ -40,15 +75,18 @@ export default {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
-        this.deleteResponse = await response.json();
+        this.deleteSuccess = 'SMS successfully deleted!';
+        this.deleting = false; // Return to initial state after successful deletion
+        this.smsId = '';
       } catch (error) {
         console.error('Error during fetch:', error);
+        this.deleteSuccess = 'Failed to delete SMS. Please try again.'; // Display error message on deletion failure
       }
     },
   },
 };
 </script>
-  
+
 <style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -59,15 +97,6 @@ export default {
   margin-top: 60px;
 }
 
-.deletemethod {
-  margin-top:87px;
-  text-align: center;
-}
-
-.form-container {
-  max-width: 400px;
-  margin: 0 auto;
-}
 
 .form-input {
   width: 100%;
