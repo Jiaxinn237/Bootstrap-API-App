@@ -22,7 +22,7 @@
     </div>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid">
-            <router-link to="/homepage" class="nav-link">
+            <router-link to="/" class="nav-link">
                 <i class="bi bi-house-fill"></i>
             </router-link>
 

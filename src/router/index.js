@@ -11,7 +11,7 @@ import ListAllMethod from '../components/ListAllMethod.vue'
 import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
-  { path: '/homepage', component: HomePage },
+  { path: '/', component: HomePage },
   { path: '/deletemethod', component: DeleteMethod },
   { path: '/getmethod', component: GetMethod },
   { path: '/postmethod', component: PostMethod },
