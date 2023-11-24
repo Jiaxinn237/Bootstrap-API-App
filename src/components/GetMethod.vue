@@ -1,16 +1,17 @@
 <template>
-  <div class="getmethod">
+  <div class="getmethod" style="  margin-top: 87px; text-align: center;">
     <div class="shadow p-3 mb-5 bg-body-tertiary rounded" style="max-width: fit-content; margin: auto;">
       <h1>Get SMS</h1>
-      <form @submit.prevent="submitForm" class="form-container">
+      <form @submit.prevent="submitForm" class="form-container" style="max-width: 400px; margin: 0 auto;">
         <label for="smsId">SMS ID:</label>
-        <input type="text" v-model="smsId" class="form-input" required />
-        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Get
+        <input type="text" v-model="smsId" class="form-input" style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;" required />
+        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: red; border: none;">Get
           SMS</button>
+          
       </form>
     </div>
 
-    <div v-if="sms" class="found-sms">
+    <div v-if="sms && Object.keys(sms).length > 0" class="found-sms">
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -66,7 +67,7 @@ export default {
   data() {
     return {
       smsId: '',
-      sms: null,
+      sms: {},
     };
   },
   methods: {
@@ -93,39 +94,5 @@ export default {
 </script>
   
 <style scoped>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-.getmethod {
-  margin-top: 87px;
-  text-align: center;
-}
-
-.form-container {
-  max-width: 400px;
-  /* Adjust the maximum width as needed */
-  margin: 0 auto;
-}
-
-.form-input {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  box-sizing: border-box;
-}
-
-.btn btn-secondary {
-  background-color: #007BFF;
-  color: #fff;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-}
 </style>
   
